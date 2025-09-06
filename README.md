@@ -13,13 +13,13 @@ This project provides a complete Python implementation of a quantitative portfol
 * **Robust Statistical Estimation:** Implements **Ledoit-Wolf shrinkage** to compute a well-conditioned and stable estimate of the sample covariance matrix, mitigating issues from high dimensionality.
 * **Principled Signal-Noise Separation:** Employs Random Matrix Theory, specifically the **Marchenko-Pastur law**, to objectively separate eigenvalues corresponding to true market signals from those representing statistical noise.
 * **Numerically Stable Reconstruction:** Utilises a trace-preserving method to re-inject noise variance back into the filtered matrix, guaranteeing the final risk model is both positive-definite and invertible.
-* **Classic Portfolio Optimization:** Constructs a **Global Minimum Variance (GMV)** portfolio, providing a disciplined, risk-focused approach to asset allocation that does not rely on forecasting returns.
+* **Classic Portfolio Optimisation:** Constructs a **Global Minimum Variance (GMV)** portfolio, providing a disciplined, risk-focused approach to asset allocation that does not rely on forecasting returns.
 
 ---
 
 ## 3. Results & Performance Analysis
 
-A backtest was performed on a universe of **9 US sector ETFs** (XLE, XLF, XLK, etc.) using daily adjusted close data from **January 1, 2000, to September 1st, 2025**. The simulation yielded a **Sharpe Ratio of [0.46]** and a **maximum drawdown of [-41.1%]**.
+A backtest was performed on a universe of **9 US sector ETFs** (XLE, XLF, XLK, etc.) using daily adjusted close data from **January 1, 2000, to September 1st, 2025**. The simulation yielded a **Sharpe Ratio of 0.46** and a **maximum drawdown of -41.1%**.
 
 The full analysis can be executed via the accompanying Jupyter Notebook: `run_backtest.ipynb`.
 
@@ -87,6 +87,6 @@ While this project successfully implements a sophisticated risk-based strategy, 
 
 * **Model Assumption Limitations:** The entire methodology relies on a rolling window, which assumes that the statistical properties of returns are relatively stable (stationary) within that lookback period. However, financial markets exhibit **regime changes** and **volatility clustering**, which this model only partially captures. Furthermore, the GMV framework completely ignores expected returns, which could lead to suboptimal allocations if strong return signals are present.
 * **Performance Enhancement:** Combine the robust risk model from this project with a separate **return forecasting model** (e.g., from time-series analysis or machine learning) to build a full mean-variance optimal portfolio.
-* **Dynamic RMT Filtering:** Instead of a static Marchenko-Pastur bound, implement a methodology where the estimated noise level ($ \sigma^2 $) is allowed to vary over time (e.g., by fitting a GARCH model to the residuals of a factor model) to create a more adaptive filter.
+* **Dynamic RMT Filtering:** Instead of a static Marchenko-Pastur bound, implement a methodology where the estimated noise level ($\sigma^2$) is allowed to vary over time (e.g., by fitting a GARCH model to the residuals of a factor model) to create a more adaptive filter.
 * **Factor Model Integration:** Use the denoised matrix as the **specific risk** component within a broader factor model (e.g., Fama-French). This would provide a more comprehensive risk decomposition, separating systematic factor risk from idiosyncratic asset risk.
 ````eof
