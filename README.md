@@ -44,7 +44,7 @@ The strategy is built on a rigorous, multi-stage mathematical pipeline that is e
 The standard **Sample Covariance Matrix (SCM)** is a notoriously noisy estimator. To counter this, we first compute a shrunk estimate, $\hat{\Sigma}_{\text{shrunk}}$, which is a structured blend of the SCM and a stable prior (the constant correlation matrix). This provides a more robust starting point for analysis:
 
 $$
-\hat{\Sigma}_{\text{shrunk}} = (1 - \delta^{*}) S + \delta^{*} F
+\hat{\Sigma}_{\mathrm{shrunk}} = (1 - \delta^{*}) S + \delta^{*} F
 $$
 
 ### Stage 2: Signal-Noise Separation (Random Matrix Theory)
