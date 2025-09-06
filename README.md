@@ -43,9 +43,9 @@ The strategy is built on a rigorous, multi-stage mathematical pipeline that is e
 ### Stage 1: Robust Covariance Estimation (Ledoit-Wolf Shrinkage)
 The standard **Sample Covariance Matrix (SCM)** is a notoriously noisy estimator. To counter this, we first compute a shrunk estimate, $\hat{\Sigma}_{\text{shrunk}}$, which is a structured blend of the SCM and a stable prior (the constant correlation matrix). This provides a more robust starting point for analysis:
 
-$$
+\[
 \hat{\Sigma}_{\mathrm{shrunk}} = (1 - \delta^{*}) S + \delta^{*} F
-$$
+\]
 
 ### Stage 2: Signal-Noise Separation (Random Matrix Theory)
 We perform an eigendecomposition on $\hat{\Sigma}_{\text{shrunk}}$ and use the Marchenko–Pastur theorem from RMT to separate signal from noise. This theorem provides a theoretical upper bound, $\lambda_{+}$, for eigenvalues of a purely random matrix. Any empirical eigenvalue larger than this bound is classified as a "signal" representing a persistent market structure:
