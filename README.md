@@ -42,19 +42,27 @@ The strategy is built on a rigorous, multi-stage mathematical pipeline that is e
 
 ### Stage 1: Robust Covariance Estimation (Ledoit-Wolf Shrinkage)
 The standard **Sample Covariance Matrix (SCM)** is a notoriously noisy estimator. To counter this, we first compute a shrunk estimate, $ \hat{\Sigma}_{\text{shrunk}} $, which is a structured blend of the SCM and a stable prior (the constant correlation matrix). This provides a more robust starting point for analysis.
-$$ \hat{\Sigma}_{\text{shrunk}} = (1 - \delta^*)S + \delta^*F $$
+$$
+\hat{\Sigma}_{\text{shrunk}} = (1 - \delta^*)S + \delta^*F
+$$
 
 ### Stage 2: Signal-Noise Separation (Random Matrix Theory)
 We perform an eigendecomposition on $ \hat{\Sigma}_{\text{shrunk}} $ and use the Marchenko-Pastur theorem from RMT to separate signal from noise. This theorem provides a theoretical upper bound, $ \lambda_+ $, for eigenvalues of a purely random matrix. Any empirical eigenvalue larger than this bound is classified as a "signal" representing a persistent market structure.
-$$ \lambda_+ = \sigma^2 \left(1 + \frac{1}{\sqrt{q}}\right)^2 $$
+$$
+\lambda_+ = \sigma^2 \left(1 + \frac{1}{\sqrt{q}}\right)^2
+$$
 
 ### Stage 3: Denoised Covariance Reconstruction
 A denoised covariance matrix is constructed using only the identified signal components. To ensure the final matrix is invertible, the average variance of the discarded noise eigenvalues ($ \bar{\lambda}_{\text{noise}} $) is re-injected into the orthogonal noise subspace.
-$$ \hat{\Sigma}_{\text{final}} = V_k \Lambda_k V_k^T + \bar{\lambda}_{\text{noise}} (I - V_k V_k^T) $$
+$$
+\hat{\Sigma}_{\text{final}} = V_k \Lambda_k V_k^T + \bar{\lambda}_{\text{noise}} (I - V_k V_k^T)
+$$
 
 ### Stage 4: Global Minimum Variance Portfolio Construction
-Using the final denoised risk model, $ \hat{\Sigma}_{\text{final}} $, we solve for the vector of portfolio weights $ W^* $ that minimises portfolio variance, subject to a full investment constraint.
-$$ W^* = \frac{\hat{\Sigma}_{\text{final}}^{-1} \mathbf{1}}{\mathbf{1}^T \hat{\Sigma}_{\text{final}}^{-1} \mathbf{1}} $$
+Using the final denoised risk model, $ \hat{\Sigma}_{\text{final}} $, we solve for the vector of portfolio weights $ W^* $ that minimizes portfolio variance, subject to a full investment constraint.
+$$
+W^* = \frac{\hat{\Sigma}_{\text{final}}^{-1} \mathbf{1}}{\mathbf{1}^T \hat{\Sigma}_{\text{final}}^{-1} \mathbf{1}}
+$$
 
 ---
 
