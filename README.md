@@ -25,8 +25,8 @@ The full analysis can be executed via the accompanying Jupyter Notebook: `run_ba
 
 <table>
   <tr>
-    <td><img src="path/to/your/equity_curve_plot.png" alt="Equity Curve" width="420"></td>
-    <td><img src="path/to/your/drawdown_plot.png" alt="Drawdown Chart" width="420"></td>
+    <td><img src="images/equity_curve_plot.png" alt="Equity Curve" width="420"></td>
+    <td><img src="images/drawdown_plot.png" alt="Drawdown Chart" width="420"></td>
   </tr>
   <tr align="center">
     <td><em>Strategy Equity Curve</em></td>
