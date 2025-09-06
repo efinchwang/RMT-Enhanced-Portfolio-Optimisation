@@ -43,12 +43,12 @@ The strategy is built on a rigorous, multi-stage mathematical pipeline that is e
 ### Stage 1: Robust Covariance Estimation (Ledoit-Wolf Shrinkage)
 The standard **Sample Covariance Matrix (SCM)** is a notoriously noisy estimator. To counter this, we first compute a shrunk estimate, $\hat{\Sigma}_{\text{shrunk}}$, which is a structured blend of the SCM and a stable prior (the constant correlation matrix). This provides a more robust starting point for analysis:
 
-\[
-\hat{\Sigma}_{\mathrm{shrunk}} = (1 - \delta^{*}) S + \delta^{*} F
-\]
+$$
+\hat{\Sigma}_{\text{shrunk}} = (1 - \delta^{\*}) S + \delta^{\*} F
+$$
 
 ### Stage 2: Signal-Noise Separation (Random Matrix Theory)
-We perform an eigendecomposition on $\hat{\Sigma}_{\text{shrunk}}$ and use the Marchenko–Pastur theorem from RMT to separate signal from noise. This theorem provides a theoretical upper bound, $\lambda_{+}$, for eigenvalues of a purely random matrix. Any empirical eigenvalue larger than this bound is classified as a "signal" representing a persistent market structure:
+We perform an eigendecomposition on $\hat{\Sigma}\_{\text{shrunk}}$ and use the Marchenko–Pastur theorem from RMT to separate signal from noise. This theorem provides a theoretical upper bound, $\lambda_{+}$, for eigenvalues of a purely random matrix. Any empirical eigenvalue larger than this bound is classified as a "signal" representing a persistent market structure:
 
 $$
 \lambda_{+} = \sigma^{2}\left(1 + \frac{1}{\sqrt{q}}\right)^{2}
@@ -81,33 +81,7 @@ The project is structured with a focus on separating the strategy logic from the
 
 ---
 
-## 6. Reproducibility
-
-To clone this repository and reproduce the analysis, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YourUsername/RMT-Portfolio-Strategy.git](https://github.com/YourUsername/RMT-Portfolio-Strategy.git)
-    cd RMT-Portfolio-Strategy
-    ```
-
-2.  **Set up a virtual environment:**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate
-    ```
-
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Execute the notebook:**
-    Open and run the cells in `run_backtest.ipynb` to execute the simulation and generate the performance results.
-
----
-
-## 7. Critical Analysis & Future Improvements
+## 6. Critical Analysis & Future Improvements
 
 While this project successfully implements a sophisticated risk-based strategy, further research could address its inherent limitations:
 
