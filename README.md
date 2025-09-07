@@ -1,4 +1,4 @@
-# Adaptive Eigenportfolio Construction
+# RMT-Enhanced Portfolio Optimisation
 
 [![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
 
